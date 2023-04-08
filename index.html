@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clock</title>
+    <link rel="stylesheet" href="clock.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Geostar+Fill&family=Stardos+Stencil&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="icon" href="apple-touch-icon.png">
+   
+</head>
+<body onload="time()">
+
+    <h1>digital clock</h1>
+    
+    <div id="box1">
+    <div id="box2">
+    <div id="clock"></div>
+    <p id="ampm"></p>
+    <p id="date1"></p>
+    </div>
+    <section id="date">
+    <button style=" background-color: transparent; color: white;">Alarm Time</button>
+    <input type="datetime-local"   onchange="setAlarmTime(this.value)"
+    name="alarmTime" id="set">
+    </section>
+    <button onclick="date()" id="setalarm">set alarm</button>
+    <button onclick="stopal()" id="stopalarm">stop alarm</button>
+    
+    
+    <section id="almset">
+        
+    <p id="display">Alarm Not Set</p>
+    </section>
+    
+    </div>
+   
+
+
+    <script>
+        //---------get time ------------
+        function time()
+        {
+            let today=new Date();
+           // console.log(today);
+           let h=today.getHours();
+           let m=today.getMinutes()
+           let s=today.getSeconds();
+           m=checkTime(m)
+           s=checkTime(s);
+           //h=checkTime1(h)
+           
+            document.getElementById("clock").innerHTML=h+':'+m+':'+s
+            setTimeout(time, 1000);   
+        }
+        function checkTime(i)
+        {
+            if(i<10)
+            {
+                i="0"+i;
+            }
+            return i;
+        }
+        var ampm = new Date();
+        var am=ampm.getHours();
+
+        //------------------to find AM and PM----------
+        if(am<12)
+        {
+         document.getElementById("ampm").innerHTML="AM";
+        }
+        else
+        {
+            document.getElementById("ampm").innerHTML="PM";
+        }
+
+         //--------------date ------------------
+        let audio=new Audio("alarm-clock-short-6402.mp3");
+        audio.loop=true;
+        var month = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+        var date1=new Date();
+        console.log(new Date().getMonth())
+        document.getElementById("date1").innerHTML=`${date1.getDate()}-${month[date1.getMonth()]}-${date1.getFullYear()}`
+
+        //--------------------set Alarm -----------------------
+            var alarmTime=null;
+             function setAlarmTime(value)
+             {
+                
+                alarmTime=value;
+              // console.log(alarmTime);
+             }
+             function date()
+             {
+                if(alarmTime==null)
+                {
+                    alert("pls set alarm")
+                }
+                if(alarmTime)
+                {
+                    var ctime=new Date()
+                    var timeal= new Date(alarmTime);
+                    if(timeal>ctime)
+                    {
+                        var timeout=timeal.getTime()-ctime.getTime()
+                        var altimeout=setTimeout(function()
+                        {
+                            audio.play()
+                        },timeout)
+                        alert("alarm set")
+                        document.getElementById("display").innerHTML=`Alarm set : ${timeal.getHours()}:${timeal.getMinutes()}`;
+                    }
+                    
+                }
+             
+             }
+
+             //-------stop Alarm-----------------
+             let p=document.getElementById("display")
+             function stopal()
+             {
+             audio.pause()
+             p.innerHTML="Alarm end"
+             timeout=null;
+             }   
+    </script>   
+</body>
+</html>

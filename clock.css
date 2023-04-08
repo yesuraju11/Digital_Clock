@@ -1,0 +1,141 @@
+body
+{
+ background: url('time1.jpg') no-repeat;
+ background-size: 100% ;
+ width: 100%;
+ height:100%;
+ box-sizing: border-box;
+ 
+ 
+}
+
+h1
+{
+ font-size:3vw;
+ color: aliceblue;
+ text-align: center;
+ text-transform: uppercase;
+ font-family:'Stardos Stencil', cursive;
+
+
+}
+#clock
+{
+    font-size: 50px;
+    font-family: 'Geostar Fill', cursive;
+    text-shadow: 0px 0px 8px rgb(58, 14, 218);
+    color: rgb(243, 42, 7);
+    text-align: center;
+    position: relative;
+    top: 80px;
+}
+#ampm
+{
+    color: rgb(242, 153, 52);
+    font-size: 20px;
+    position: relative;
+    left: 82%;
+    top:-10%;
+    width: 2%;
+    height: auto;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+#box1
+{
+    width:70%;
+    height: auto 500px;
+    border: 8px solid black;
+    border-radius: 50px;
+    box-shadow: 0px 0px 10px rgb(210, 65, 49);
+    margin-left: 15%;
+}
+#box2
+{
+    width: 60%;
+    height: 200px;
+    background-color:rgba(192, 192, 192, 0.384);
+    margin-left: 18%;
+    margin-top: 10%;
+    border-radius: 10px;
+}
+#box2:hover
+{
+    background-color: rgba(91, 213, 244, 0.332);
+}
+#date
+{
+    width:15%;
+    height: 20px;
+    /*background-color: aliceblue;*/
+    position: relative;
+    top:-150px;
+    margin-left: 20px;
+}
+#set
+{
+    display: none;
+}
+#date:hover #set
+{
+    display: block;
+}
+#setalarm
+{
+    width: 10%;
+    height: 50px;
+    position: relative;
+    left: 30px;
+    border-radius: 10px;
+}
+#setalarm:active
+{
+ background-color: transparent;
+}
+
+#stopalarm
+{
+    width: 10%;
+    height: 50px;
+    position: relative;
+    left: 78%; 
+    border-radius: 10px;
+}
+#stopalarm:active
+{
+    background-color: transparent;   
+}
+#date1
+{
+    position: relative;
+    left: 44%;
+    top: 20%;
+    font-size: 20px;
+    text-shadow: 0px 0px 10px red;
+    font-family: cursive;
+}
+#almset
+{
+    width: 30%;
+    height: 100px;
+    background-color: rgba(0, 255, 255, 0.123);
+    position: relative;
+    left: 36%;
+    
+}
+#display
+{
+    color:rgb(0, 242, 255); 
+    font-size: 20px; 
+    text-shadow: 0px 0px 5px white;
+    font-family:serif; 
+    margin-left: 10px;
+    text-align: center;
+}
+@media only screen and (max-width: 520px) 
+{
+    /* For mobile phones: */
+
+body, #box1, #box2, #date, #date1, #setalarm, #stopalarm,#stopalarm,#ampm,#display {
+      width: 100%;
+    }
+}
